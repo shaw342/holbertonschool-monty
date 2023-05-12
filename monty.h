@@ -5,6 +5,9 @@
 #include <unistd.h>
 #include <string.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 extern int error;
 
@@ -37,7 +40,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-void __push(char *token,stack_t **stack,unsigned int line_number);
+void __push(stack_t **stack,unsigned int line_number);
 void __pall(stack_t **stack,unsigned int line_number);
 void __nop(stack_t **stack,unsigned int line_number);
 int get_op_func(char *line, stack_t **stack,unsigned int line_number);

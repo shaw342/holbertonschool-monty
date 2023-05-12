@@ -1,8 +1,7 @@
 #include "monty.h"
 int get_op_func(char *line, stack_t **stack,unsigned int line_number)
 {
-	instruction_t func[] = 
-	{
+	instruction_t func[] = {
 		{"push", __push},
 		{"pall", __pall},
 		{"nop", __nop},
@@ -20,5 +19,6 @@ int get_op_func(char *line, stack_t **stack,unsigned int line_number)
 	}
 
 	fprintf(stderr,"%d: unknown instruction %s\n",line_number,line);
+	error = 1;
 	return (EXIT_FAILURE);
 }

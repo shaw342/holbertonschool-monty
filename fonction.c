@@ -21,7 +21,7 @@ void __push(stack_t **stack,unsigned int line_number)
 {
 	stack_t *newNode = NULL;
 	int i;
-	char *token;
+	char *token = NULL;
 
 
 	if (token == NULL)
