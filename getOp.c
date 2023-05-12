@@ -12,12 +12,12 @@ int get_op_func(char *line, stack_t **stack,unsigned int line_number)
 	{
 		if (strcmp(line,func[i].opcode) == 0)
 		{
-			func[i].f(stack,line_number);
+			func[i].f(stack, line_number);
 			return (EXIT_SUCCESS);
 		}
 	}
 
-	fprintf(stderr,"%d: unknown instruction %s\n",line_number,line);
+	fprintf(stderr,"L%d: unknown instruction %s\n",line_number,line);
 	error = 1;
 	return (EXIT_FAILURE);
 }
