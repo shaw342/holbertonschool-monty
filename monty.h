@@ -39,7 +39,7 @@ typedef struct instruction_s
         char *opcode;
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
-
+extern char *global_token;
 void __push(char *token,stack_t **stack, unsigned int line_number);
 void __pall(stack_t **stack,unsigned int line_number);
 void __nop(stack_t **stack,unsigned int line_number);

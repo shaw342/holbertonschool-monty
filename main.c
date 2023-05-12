@@ -6,6 +6,7 @@ int error = 0;
  *@argc: number of arguments
  *Return: EXIT_FAILURE or EXIT_SUCCESS
  */
+char *global_token = NULL;
 int main(int argc, char **argv)
 {
 	FILE *ptr;
@@ -30,7 +31,8 @@ int main(int argc, char **argv)
 	while(getline(&line,&size,ptr) != -1 && error != 1) 
 	{
 		line_number++;
-		token = strtok(line,"\n\t ");
+		global_token = token;
+	       token = strtok(line,"\n\t ");
 		if (token ==  NULL || strncmp(token,"#",1) == 0)
 			continue;
 
