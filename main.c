@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 		{
 
 			token = strtok(NULL,"\n\t");
-			__push(&stack,line_number);
+			__push(token,&stack, line_number);
 		}
 		else
 		{		

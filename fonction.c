@@ -7,9 +7,8 @@ void __nop(stack_t **stack,unsigned int line_number)
 }
 void __pall(stack_t **stack,unsigned int line_number)
 {
+	(void) (line_number);
 	stack_t *h = *stack;
-
-	(void)line_number;
 	while(h != NULL)
 	{
 		printf("%d\n",h->n);
@@ -17,11 +16,10 @@ void __pall(stack_t **stack,unsigned int line_number)
 	}
 }
 
-void __push(stack_t **stack,unsigned int line_number)
+void __push(char *token,stack_t **stack, unsigned int line_number)
 {
 	stack_t *newNode = NULL;
 	int i;
-	char *token = NULL;
 
 
 	if (token == NULL)
@@ -33,6 +31,8 @@ void __push(stack_t **stack,unsigned int line_number)
 	}
 	for(i = 0;token[i] !=  '\0';i++)
 	{
+		if (token[i] == '-')
+			i++;
 		if (isdigit(token[i]) == 0)
 		{
 			fprintf(stderr,"L%d: usage: push integer",line_number);
