@@ -2,7 +2,6 @@
 
 void __push(char *token,stack_t **stack, unsigned int line_number)
 {
-	global_token = token;
 	stack_t *newNode = NULL;
 	int i;
 
