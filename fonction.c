@@ -7,7 +7,7 @@ void __push(char *token,stack_t **stack, unsigned int line_number)
 
 	if (token == NULL)
 	{
-		fprintf(stderr,"L%d: usage: push integer",line_number);
+		fprintf(stderr,"L%d: usage: push integer\n",line_number);
 		error = 1;
 		return;
 
