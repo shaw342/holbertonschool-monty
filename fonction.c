@@ -1,21 +1,4 @@
 #include "monty.h"
-void __nop(stack_t **stack,unsigned int line_number)
-{
-	(void) **stack;
-	(void) line_number;
-
-}
-void __pall(stack_t **stack,unsigned int line_number)
-{
-	(void) (line_number);
-	stack_t *h = *stack;
-	while(h != NULL)
-	{
-		printf("%d\n",h->n);
-		h = h->next;
-	}
-}
-
 void __push(char *token,stack_t **stack, unsigned int line_number)
 {
 	stack_t *newNode = NULL;
@@ -25,8 +8,8 @@ void __push(char *token,stack_t **stack, unsigned int line_number)
 	if (token == NULL)
 	{
 		fprintf(stderr,"L%d: usage: push integer",line_number);
-		//perror = 1;
-		exit(EXIT_FAILURE);
+		error = 1;
+		return;
 
 	}
 	for(i = 0;token[i] !=  '\0';i++)
@@ -35,9 +18,9 @@ void __push(char *token,stack_t **stack, unsigned int line_number)
 			i++;
 		if (isdigit(token[i]) == 0)
 		{
-			fprintf(stderr,"L%d: usage: push integer",line_number);
+			fprintf(stderr,"L%d: usage: push integer\n",line_number);
 			error = 1;
-			exit(EXIT_FAILURE);
+			return;
 		}
 	}
 
@@ -45,9 +28,9 @@ void __push(char *token,stack_t **stack, unsigned int line_number)
 	
 	if (newNode == NULL)
 	{
-		fprintf(stderr,"Error: malloc failed");
+		fprintf(stderr,"Error: malloc failed\n");
 		error = 1;
-		exit(EXIT_FAILURE);
+		return;
 	}
 
 	newNode->n = atoi(token);
@@ -62,4 +45,19 @@ void __push(char *token,stack_t **stack, unsigned int line_number)
 	}
 	*stack = newNode;
 
+}
+void __pall(stack_t **stack,unsigned int line_number)
+{
+	(void) (line_number);
+	stack_t *h = *stack;
+	while(h != NULL)
+	{
+		printf("%d\n",h->n);
+		h = h->next;
+	}
+}
+void __nop(stack_t **stack,unsigned int line_number)
+{
+	(void) **stack;
+	(void) line_number;
 }
